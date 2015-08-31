@@ -18,4 +18,7 @@ Create a find function that takes a string and an array. If the string is in the
   	
   	
 
-  
+##### Best Practices
+	var find = function(string, array) {
+  		return array.indexOf(string) >= 0;
+	};
