@@ -24,15 +24,9 @@ If you stuck, this can help you: http://en.wikipedia.org/wiki/Law_of_cosines. Bu
 There is very small chance of random test to fail due to round-off error, in such case resubmit your solution.
 
 ##### My solution
-  /* Should return ᐃ type:
-    0 : if ᐃ cannot be made with given sides
-    1 : acute ᐃ
-    2 : right ᐃ
-    3 : obtuse ᐃ
-  */
-  function triangleType(a, b, c){
+	function triangleType(a, b, c){
     var x, y, z = 0;
-
+    
     if (a <= b) {
       if (b <= c) {
         z = c;
@@ -40,12 +34,12 @@ There is very small chance of random test to fail due to round-off error, in suc
         y = b;
       }
       else {
-        var z = b;
-        var x = a;
-        var y = c;
+        z = b;
+        x = a;
+        y = c;
       }  
     }
-    else if (b < a) {
+    else {
       if (a <= c) {
         z = c;
         x = a;
@@ -57,9 +51,8 @@ There is very small chance of random test to fail due to round-off error, in suc
         y = c;
       }
     } 
-   
 
-    if (x + y < z || x*y*z === 0){
+    if (x + y <= z || x*y*z === 0){
       return 0;
     }
     if ((x*x) + (y*y) > z*z){
@@ -71,6 +64,4 @@ There is very small chance of random test to fail due to round-off error, in suc
     if ((x*x) + (y*y) < z*z){
       return 3;
     }
-    return 0;
-  	}
-  
+  }
