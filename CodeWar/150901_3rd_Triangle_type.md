@@ -24,44 +24,111 @@ If you stuck, this can help you: http://en.wikipedia.org/wiki/Law_of_cosines. Bu
 There is very small chance of random test to fail due to round-off error, in such case resubmit your solution.
 
 ##### My solution
-	function triangleType(a, b, c){
-    var x, y, z = 0;
-    
-    if (a <= b) {
-      if (b <= c) {
-        z = c;
-        x = a;
-        y = b;
+    function triangleType(a, b, c){
+      var x, y, z = 0;
+      
+      if (a <= b) {
+        if (b <= c) {
+          z = c;
+          x = a;
+          y = b;
+        }
+        else {
+          z = b;
+          x = a;
+          y = c;
+        }  
       }
       else {
-        z = b;
-        x = a;
-        y = c;
-      }  
-    }
-    else {
-      if (a <= c) {
-        z = c;
-        x = a;
-        y = b;
-      }
-      else {
-        z = a;
-        x = b;
-        y = c;
-      }
-    } 
+        if (a <= c) {
+          z = c;
+          x = a;
+          y = b;
+        }
+        else {
+          z = a;
+          x = b;
+          y = c;
+        }
+      } 
 
-    if (x + y <= z || x*y*z === 0){
-      return 0;
+      if (x + y <= z || x*y*z === 0){
+        return 0;
+      }
+      if ((x*x) + (y*y) > z*z){
+        return 1;  
+      }
+      if ((x*x) + (y*y) === z*z){
+        return 2;
+      }  
+      if ((x*x) + (y*y) < z*z){
+        return 3;
+      }
     }
-    if ((x*x) + (y*y) > z*z){
-      return 1;  
+    
+##### Impressive code
+
+    function triangleType(a, b, c){
+      var result = triangleType.ACUTE, 
+          sides = [a,b,c].sort(function(a,b){return a-b}); 
+      
+      a = sides[0], b = sides[1], c = sides[2];
+      
+      if(a <= c - b) {
+        result = triangleType.INVALID;
+        
+      } else if(c*c === a*a + b*b) {
+        result = triangleType.RIGHT;
+        
+      } else if(c*c > a*a + b*b) {
+        result = triangleType.OBTUSE;
+      }
+      
+      return result;
     }
-    if ((x*x) + (y*y) === z*z){
-      return 2;
-    }  
-    if ((x*x) + (y*y) < z*z){
-      return 3;
-    }
-  }
+
+    triangleType.INVALID = 0;
+    triangleType.ACUTE = 1;
+    triangleType.RIGHT = 2;
+    triangleType.OBTUSE = 3;  
+    
+ 컨벤션도 readable하게 잘 만들어서 지킨 코드. return 한 다음에 함수 바깥에서 return값을 숫자로 변환할 생각은 하지 못했는데, 그렇게 하니까 정말 readable하구나.
+ 세번째 줄에 
+`sides = [a,b,c].sort(function(a,b){return a-b});`
+는 어떻게 이해해야 하는 지 모르겠다. 소팅을 저런식으로 할 수 있나? 그런데 일단, 배열을 만들어서 기본으로 내장된 소트메서드를 쓴다는 생각 자체를 못했던 사람으로서, 되게 우아한 코딩 방식이라는 생각이 든다.
+
+##### 새로 알게 된 것
+ 컨벤션도 readable하게 잘 만들어서 지킨 코드. return 한 다음에 함수 바깥에서 return값을 숫자로 변환할 생각은 하지 못했는데, 그렇게 하니까 정말 readable하구나.
+
+ 세번째 줄에 
+`sides = [a,b,c].sort(function(a,b){return a-b});`
+는 어떻게 이해해야 하는 지 모르겠다. 소팅을 저런식으로 할 수 있나? 그런데 일단, 배열을 만들어서 기본으로 내장된 소트메서드를 쓴다는 생각 자체를 못했던 사람으로서, 되게 우아한 코딩 방식이라는 생각이 든다.
+
+* 컨벤션을 만들어서 쓰면 좋다.
+* Javascript에 기본적으로 있는 sort를 사용할 수 있다.
+* String같은 경우, array.sort()를 하면 알파벳 순서대로 sorting된다.
+* Number는 parameter로 `function(a, b){return a-b}`을 넣어주면 오름차순, `a-b`대신 `b-a`를 넣으면 내림차순으로 sorting된다.
+
+예를 들어,
+
+Sort numbers in an array in ascending order:
+
+	var points = [40, 100, 1, 5, 25, 10];
+	points.sort(function(a, b){return a-b});
+
+The result of points will be:
+
+	1,5,10,25,40,100
+
+
+Sort numbers in an array in descending order:
+
+	var points = [40, 100, 1, 5, 25, 10];
+	points.sort(function(a, b){return b-a});
+
+The result of points will be:
+
+	100,40,25,10,5,1
+
+
+  
