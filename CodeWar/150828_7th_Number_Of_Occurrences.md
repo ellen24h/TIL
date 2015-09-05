@@ -98,9 +98,9 @@ JavaScript
 
 JavaScript
 
-var filteredNames = Object.getOwnPropertyNames(window).filter(IsC);
+	var filteredNames = Object.getOwnPropertyNames(window).filter(IsC);
 
-    for (i in filteredNames)
+    	for (i in filteredNames)
         document.write(filteredNames[i] + "<br/>");
 
 	// Check whether the string starts with "css".
