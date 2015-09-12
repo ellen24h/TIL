@@ -1,4 +1,4 @@
-AngularJS 공부하기
+# AngularJS - codecademy
 
 
 1. In app.js, we created a new module named MyApp. A module contains the different components of an AngularJS app.
@@ -32,3 +32,37 @@ Great! The product price changed from a number to a formatted currency. How does
 3. The filter outputs a formatted currency with the dollar sign and the correct decimal places.
 
 In this way, filters help to separate the content in the controller from its presentation in the view.
+
+Let's do a quick review:
+
+- A module contains the different components of an AngularJS app
+- A controller manages the app's data
+- An expression displays values on the page
+- A filter formats the value of an expression
+
+We've used a few directives so far - ng-app, ng-controller, ng-repeat, and ng-src. What can we generalize about directives?
+
+Directives bind behavior to HTML elements. When the app runs, AngularJS walks through each HTML element looking for directives. When it finds one, AngularJS triggers that behavior (like attaching a scope or looping through an array).
+
+So far we've made a static AngularJS app by adding properties in the controller and displaying them in the view. AngularJS is a framework for building dynamic web apps, so let's start to make this app interactive.
+
+Great! Each time you click on the number of likes, the number goes up. How does it work?
+
+1. The ng-click is a directive. When <p class="likes"> is clicked, ng-click tells AngularJS to run the plusOne() function in the controller.
+
+2. The plusOne() function gets the index of the product that was clicked, and then adds one to that product's likes property.
+
+Notice that the plusOne() doesn't interact with the view at all; it just updates the controller. Any change made to the controller shows up in the view.
+
+Congratulations! You built an AngularJS app from scratch. What can we generalize so far?
+
+1. A user visits the AngularJS app.
+
+2. The view presents the app's data through the use of expressions, filters, and directives. Directives bind new behavior HTML elements.
+
+3. A user clicks an element in the view. If the element has a directive, AngularJS runs the function.
+
+4. The function in the controller updates the state of the data.
+
+5. The view automatically changes and displays the updated data. The page doesn't need to reload at any point.
+
