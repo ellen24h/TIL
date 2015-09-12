@@ -110,6 +110,7 @@ jQuery
 	</html>
 
 # wrapper
+
 ###wrapper란?
 jQuery(element object|'css style 선택자')
 
@@ -171,8 +172,10 @@ jQuery(element)
 	</html>
 
 #선택자
+
 ###선택자란?
 jQuery wrapper에는 CSS선택자가 위치할 수 있는데, 이를 통해서 제어하려는 엘리먼트를 빠르고 정확하게 지정할 수 있다.
+
 ###선택자 탐색기 
 
 	<!DOCTYPE html>
@@ -409,11 +412,12 @@ jQuery wrapper에는 CSS선택자가 위치할 수 있는데, 이를 통해서 �
 		</html> 
 
 #Chain
+
 ###Chain이란?
 jQuery의 메소드들은 반환값으로 자기 자신을 반환해야 한다는 규칙을 가지고 있다.
-
+<p>
 이를 이용하면 한번 선택한 대상에 대해서 연속적인 제어를 할 수 있다.
-
+<p>
 예제1. jQuery를 이용하여 코딩하는 경우
 
 	<html>
@@ -468,7 +472,9 @@ jQuery의 메소드들은 반환값으로 자기 자신을 반환해야 한다�
 	</html>
 
 #Event
+
 ###Event란?
+
 - 시스템에서 일어나는 사건을 의미한다.
 - javascript나 jQuery에게 이벤트란 브라우져에서 일어나는 사건을 의미한다. (클릭, 마우스 이동, 타이핑, 페이지 로딩 등)
 - 이벤트가 발생했을 때 작동할 로직을 시스템에게 알려두면 이벤트가 발생했을 때 시스템이 그 로직을 호출한다.
@@ -602,9 +608,11 @@ jQuery의 메소드들은 반환값으로 자기 자신을 반환해야 한다�
 http://api.jquery.com/category/event 
 
 #엘리먼트제어
+
 ###엘리먼트제어
 - jQuery는 엘리먼트를 제어하는 일관되고 풍부한 기능들을 제공한다.
 - http://api.jquery.com/category/manipulation
+
 ###자식으로 삽입(.append(), .appendTo(), .html(), .prepend(), .prependTo(), .text())
 
 	<!-- http://api.jquery.com/append/ -->
@@ -785,6 +793,7 @@ http://api.jquery.com/category/event
 	</html>
 
 #폼
+
 ###폼 
 - 서버로 데이터를 전송하기 위한 수단
 - jQuery는 폼을 제어하는데 필요한 이벤트와 메소드를 제공한다.
@@ -861,12 +870,14 @@ http://api.jquery.com/category/event
 	        </script>
 	    </body>
 	</html>
+
 #탐색
 - 컨텍스트를 유지하면서 제어의 대상이 되는 엘리먼트를 변경하는 기법
 - http://api.jquery.com/category/traversing/
 - http://opentutorials.org/example/jquery/example.traversing.html 
 
 #애니메이션
+
 ###효과란?
 - javascript의 css를 이용해서 HTML 엘리먼트에 동적인 효과를 ㅈ루 ㅅ ㅜ있다.
 - JQuery의 효과 메소드를 호출하는 것만으로 간단히 효과를 줄 수 있다.
@@ -967,6 +978,7 @@ http://api.jquery.com/category/event
 	</html>
 
 #ajax
+
 ###ajax란?
 - Asynchronous JavaScript and XML 의 약자
 - 자바스크립트를 이용해서 비동기식으로 서버와 통신하는 방식. 이 때 XML을 이용한다.
