@@ -69,10 +69,37 @@ console.log(nums5); // [1, 2, 3, 4]
 
 // 2.4.3 배열 중간에 요소를 추가하거나 배열의 중간에 있는 요소 삭제하기
 
+// splice(시작 인덱스, 삭제할 요소의 개수(추가할 때는 0), 배열에 추가할 요소)
 
+var nums6 = [1, 2, 3, 7, 8, 9];
+var newElements = [4, 5, 6];
+nums6.splice(3, 0, 4, 5, 6);
+console.log(nums6);
+nums6.splice(3, 3);
+console.log(nums6);
 
+// 2.4.4 배열 요소 정리하기
 
+// reverse(): 배열의 요소를 역순으로 바꿈
 
+var nums7 = [1, 2, 3, 4, 5];
+nums7.reverse();
+console.log(nums7);
 
+// sort(): 배열의 문자열 요소를 순서대로 정렬
 
+var names = ["David", "Mike", "Cynthia", "Bryan"];
+names.sort();
+console.log(names);
+
+// sort() 함수에 순서를 결정해주는 함수를 인자로 전달하면
+// sort() 함수는 인자로 전달된 함수를 이용해 숫자를 올바르게 정렬할 수 있다
+//
+function compare(num1, num2) {
+    return num1 - num2;
+}
+
+var numbers = [3, 1, 2, 100, 4, 200];
+numbers.sort(compare);
+console.log(numbers);
 
