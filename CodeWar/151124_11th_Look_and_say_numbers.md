@@ -44,8 +44,8 @@ Write a function that given a starting value as a string, returns the appropriat
         }  
         result.push(list.join(""));
         console.log(list.join(""));
-        debugger;
         data = list.join("");
+        list = []; // 이 부분을 생각하지 못해서 생긴 Bug로 오래 시간이 걸렸다.
         len--;
       }
       return result;
