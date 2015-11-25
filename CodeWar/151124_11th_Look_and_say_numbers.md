@@ -52,3 +52,10 @@ Write a function that given a starting value as a string, returns the appropriat
     }
 
 
+### Impressive Solutions
+          
+          function lookAndSay(data,len) {
+            function next(token) { return '' + token.length + token[0]; }
+            function process() { return data = data.match(/(\d)\1*/g).map(next).join(''); }
+            return Array.apply(0, Array(len)).map(process);
+          }
