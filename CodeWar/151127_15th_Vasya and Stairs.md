@@ -1,55 +1,69 @@
 ### Problem
 Description:
 
-Take the following IPv4 address: 128.32.10.1 This address has 4 octets where each octet is a single byte (or 8 bits).
+Description:
 
-1st octet 128 has the binary representation: 10000000
-2nd octet 32 has the binary representation: 00100000
-3rd octet 10 has the binary representation: 00001010
-4th octet 1 has the binary representation: 00000001
-So 128.32.10.1 == 10000000.00100000.00001010.00000001
+Vasya wants to climb up a stair of certain amount of steps (Input parameter 1). There are 2 simple rules that he has to stick to.
 
-Because the above IP address has 32 bits, we can represent it as the 32 bit number: 2149583361.
+Vasya can climb 1 or 2 steps at each move.
+Vasya wants the number of moves to be a multiple of a certain integer. (Input parameter 2).
+Task:
 
-Write a function ip_to_int32(ip) ( JS: ipToInt32(ip) ) that takes an IPv4 address and returns a 32 bit number.
+What is the MINIMAL number of moves making him climb to the top of the stairs that satisfies his conditions?
 
-    ipToInt32("128.32.10.1") => 2149583361
+Input
+
+Number of stairs: 0 < N ≤ 10000 ;
+Integer to be multiplied : 1 < M ≤ 10;
+Output
+
+Return a single integer - the minimal number of moves being a multiple of M;
+If there is no way he can climb satisfying condition return - 1 instead.
+
+Examples
+
+    numberOfSteps(10, 2) => 6  // Sequence of steps : {2, 2, 2, 2, 1, 1}
+
+    numberOfSteps(3, 5) => -1 // !Possible sequences of steps : {2, 1}, {1, 2}, {1, 1, 1}
 
 ### My solution
-    function ipToInt32(ip){
-      ip = ip.split('.');
-      for (var i = 0; i < ip.length; i++) {
-        ip[i] = parseInt(ip[i], 10).toString(2);
-        while(ip[i].length < 8) {
-          ip[i] = '0' + ip[i];
+    function numberOfSteps(steps, m){
+      if(m > steps) {
+        return -1;
+      }
+      if(m === 1) {
+        return steps/2
+      }
+      if(steps % 2 === 0) {
+        for (var i = steps/2 ; i <= steps ; i++) {
+          if (i % m === 0) {
+            return i;
+          }
         }
       }
-      ip = ip.join('');
-      console.log(parseInt(ip, 2).toString(10));
-      return parseInt(parseInt(ip, 2).toString(10)); // 다시 한번 parseInt를 하는 부분에서 시간이 좀 걸렸다
+      else {
+        for (var i = steps/2 + 0.5 ; i <= steps ; i++) {
+          if (i % m === 0) {
+            return i;
+          }
+        }
+      }
+      return -1;
     }
 
 ### Impressive Solutions
-    # 1
-    function ipToInt32(ip){
-       return ip.split(".").reduce(function(int,v){ return int*256 + +v } )
-    }
+    function numberOfSteps(steps, m){
+      if (steps < m) {
+        return -1;
+      }
 
-    # 2
-    function ipToInt32(ip){
-        ip = ip.split('.');
-        return  ((ip[0] << 24) + (ip[1] << 16) + (ip[2] << 8) + (ip[3] << 0))>>>0;
-    }
+      if (steps % 2 == 0 && (steps / 2) % m == 0) {
+          return (steps / 2);
+      }
 
-    # 3
-    function ipToInt32(ip) {
-      return parseInt(ip.split('.').map(function(v) {
-        var bin = parseInt(v).toString(2);
-        return new Array(9 - bin.length).join('0') + bin;
-      }).join(''), 2);
+      return (steps / 2) + m - ((steps / 2) % m);
     }
 
 ### What I Learned
-    map이나 reduce를 쓰면 for문을 쓰지 않아도 되니 효율이 증가할 것 같다
-    사용을 익숙하게 해야겠다.
-    정규표현식과 비트연산자 등도 공부해보면 좋겠다.
+    규칙을 찾아서 수식화 하면 for문을 쓰지 않아도 되었을 테다.
+    다시 구현해봐야겠다.
